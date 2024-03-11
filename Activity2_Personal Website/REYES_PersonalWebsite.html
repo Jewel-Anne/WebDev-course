@@ -1,0 +1,587 @@
+<!----------------------------------------------------------------------------------------------- 
+	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Create a website that displays your personal information.
+					 Use HTML and CSS.
+					 There must be a working navigation bar.
+					 You can include your skills, hobbies, portfolio, contacts, etc.
+					 Design the page any way you want.
+------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta
+			name="description"
+			content="HTML Personal Website,Jewel Reyes, My Skills, My Skills, Fun Facts About Me, About Me, My Arts, Painting, WPAP, Oil Paint"/>
+		<meta name="author" content="Jewel Anne A. Reyes">
+		
+		<title>Jewel Reyes </title>
+		<link rel="shortcut icon" href="assets/icon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: "Montserrat", sans-serif;
+			box-sizing: border-box;
+		}
+		
+		#home {
+			height: 100vh;
+			width: 100%;
+			background-image: url(assets/bg.jpg);
+			background-size: cover;
+			background-position: center;
+		}
+		
+/* Navigation Bar  */
+
+		.navbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-left: 5%;
+			padding-right: 3%;
+			margin: auto;
+			
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			background-color: transparent;
+			z-index: 9999;
+			width: 100%;
+		}
+	
+		.logo {
+			width: 100px;
+			cursor: pointer;
+			float: left;
+		}
+		
+		.navbar ul {
+			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.navbar ul li {
+			list-style: none;
+			display: inline-block;
+			margin: 10px 25px;
+			position: relative;
+		}
+		
+		.navbar ul li a {
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		.navbar ul li::after {
+			content: '';
+			height: 3px;
+			width: 0%;
+			background: #cf081d;
+			position: absolute;
+			left: 0;
+			bottom: -10px;
+			transition: 0.5s;
+		}
+		
+		.navbar ul li:hover::after {
+			width: 100%;
+		}
+		
+/* Home  */
+
+		.content {
+			position: absolute;
+			top: 70%;
+			left: 8%;
+			transform: translateY(-50%);
+		}
+		h1 {
+			color: white;
+			margin: 15px 0px 15px;
+			font-size: 75px;
+		}
+		h3 {
+			color: #cf081d;
+			font-size: 25px;
+			margin-bottom: 50px;
+		}
+		h4 {
+			color: #fcfc;
+			letter-spacing: 2px;
+			font-size: 20px;
+		}
+
+/* About Me */
+		
+		#aboutme {
+			width: 100%;
+			padding: 100px 0px;
+			background-color: #cf081d;
+		}
+		video {
+			display: block;
+			padding-left: 10%;
+	
+		}
+		
+		.aboutme-text {
+			width: 50%;
+			margin-left: 20px;
+		}
+		
+		.aboutme-text h2 {
+			color: #000;
+			font-size: 75px;
+			margin-bottom: 30px;
+			text-align: right;
+		}
+		
+		.aboutme-text p {
+			color: #fff;
+			letter-spacing: 1px;
+			line-height: 28px;
+			font-size: 18px;
+			margin-bottom: 45px;
+			text-align: right;
+		}
+		
+		.main {
+			width: 1130px;
+			max-width: 95%;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+			
+/* My Skills  */		
+		
+		#skills {
+			width: 100%;
+			padding: 100px 0px;
+			background-color: #ebecf0;
+		}
+		
+		.skills-text {
+			width: 100%;
+			margin-left: 20px;
+			text-align: center;
+		}
+		
+		.skills-text h2 {
+			color: #cf081d;
+			font-size: 75px;
+		}
+		
+		.skills-text h5 {
+			color: #000;
+			letter-spacing: 1px;
+			line-height: 28px;
+			font-size: 18px;
+			margin-bottom: 45px;
+		}
+
+		.skills-area {
+			display: flex;
+			flex-direction: column;
+			padding: 0 20%;
+		}
+
+		.skill {
+			position: relative;
+			margin-bottom: 20px;
+		}
+
+		.skill-title {
+			font-size: 25px;
+			margin-bottom: 10px;
+			text-align: left;
+		}
+
+		.skill-bar {
+			width: 100%;
+			background: rgba(255, 255, 255, 0.6);
+			height: 40px;
+			z-index: -1;
+			border-radius: 100px;
+			position: absolute;
+		}
+
+		.skill-fill {
+			background: #cf081d;
+			height: 40px;
+			border-radius: 100px;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			padding-right: 30px;
+			overflow: hidden;
+		}
+
+		.skill-percent {
+			font-size: 20px;
+		}
+
+		.webdev {
+			animation: webdev 2s;
+			width: 40%;
+		}
+
+		.graphic {
+			animation: graphic 2s;
+			width: 80%;
+		}
+		
+		.lead {
+			animation: lead 2s;
+			width: 60%;
+		}
+
+		.proj {
+			animation: proj 2s;
+			width: 65%;
+		}
+		
+		.adapt {
+			animation: adapt 2s;
+			width: 45%;
+		}
+
+		@keyframes webdev {
+			from {
+				width: 0;
+			}
+			to {
+				width: 40%;
+			}
+		}
+
+		@keyframes graphic {
+			from {
+				width: 0;
+			}
+			to {
+				width: 80%;
+			}
+		}
+		
+		@keyframes lead {
+			from {
+				width: 0;
+			}
+			to {
+				width: 60%;
+			}
+		}
+		
+		@keyframes proj {
+			from {
+				width: 0;
+			}
+			to {
+				width: 65%;
+			}
+		}
+		
+		@keyframes adapt {
+			from {
+				width: 0;
+			}
+			to {
+				width: 45%;
+			}
+		}
+
+		@media only screen and (max-width: 750px) {
+			.skills-area {
+				padding: 0 5%;
+			}
+		}
+	
+/* My Arts  */		
+		
+		#arts {
+			width: 100%;
+			padding: 100px 0px;
+			background-color: #cf081d;
+		}
+		
+		.arts-text {
+			width: 100%;
+			margin-left: 20px;
+			text-align: center;
+		}
+		
+		.arts-text h2 {
+			color: #000;
+			font-size: 75px;
+		}
+		
+		.arts-text h5 {
+			color: #fff;
+			letter-spacing: 1px;
+			line-height: 28px;
+			font-size: 18px;
+			margin-bottom: 45px;
+		}
+		
+		.arts-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+			align-items: center;
+			gap: 2rem;
+			margin-top: 2rem;
+			margin-left: 2rem;
+			margin-right: 2rem;
+		}
+		
+		.row img {
+			height: 200px;
+			width: 100%
+			border-radius: 0.5rem;
+			margin-bottom: 1.5rem;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+		
+		.row {
+			padding: 25px;
+			background: #ebecf0;
+			border-radius: 0.5rem;
+			transition: all .40s ease;
+		}
+		
+		.row:hover {
+			transform: scale(1.01) translateY(-5px);
+			cursor: pointer;
+		}
+		
+		.main-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+		}
+		
+		.row h3 {
+			font-size: 25px;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		
+		.row h6 {
+			color: #000;
+			font-size: 16px;
+			font-weight: 500;
+			letter-spacing: 1px;
+		}
+		
+	</style>
+
+	<body>
+		<nav class="navbar">
+			<a href='#home'>
+				<img src="assets/logo.png" class="logo">
+			</a>
+			
+			<ul>
+				<li><a href='#home'>Home</a></li>
+				<li><a href='#aboutme'>About Me</a></li>
+				<li><a href='#skills'>Skills</a></li>
+				<li><a href='#arts'>Arts</a></li>
+			</ul>
+		</nav>
+		
+			<section class="home" id="home">
+				<div class="content">
+					<h4>Hello! My name is</h4>
+					<h1>Jewel Reyes</h1>
+					<h3>I'm an Artist</h3>
+				</div>
+			</section>
+		
+			<section class= "aboutme" id="aboutme">
+				<div class="main">
+					<div class="aboutme-text">
+						<h2>About Me</h2>
+						<p>I am Jewel Anne A. Reyes. 
+						A 3rd Year student from Polytechnic University of the Philippines
+						taking BS in Computer Science. I love any form of arts.
+						Get to know me more by watching this short video. </p>
+					</div>
+					
+					<video width="720" height="480" controls>
+						<source src="assets/aboutme.mp4" type="video/mp4">
+					</video>
+				</div>
+			</section>
+			
+			<section class="skills" id="skills">
+				<div class="skills-text">
+					<h2>My Skills</h2>
+					<h5>Here are some of my skills:</h5>
+		
+					<div class="skills-area">
+					
+					  <div class="skill">
+						<div class="skill-title">Web Development</div>
+						<div class="skill-bar"></div>
+						<div class="webdev skill-fill">
+							<span class="skill-percent">40%</span>
+						</div>
+					  </div>
+					  
+					  <div class="skill">
+						<div class="skill-title">Graphic Design</div>
+						<div class="skill-bar"></div>
+						<div class="graphic skill-fill">
+							<span class="skill-percent">80%</span>
+						</div>
+					  </div>
+					  
+					  <div class="skill">
+						<div class="skill-title">Leadership</div>
+						<div class="skill-bar"></div>
+						<div class="lead skill-fill">
+							<span class="skill-percent">60%</span>
+						</div>
+					  </div>
+					  
+					  <div class="skill">
+						<div class="skill-title">Project Management</div>
+						<div class="skill-bar"></div>
+						<div class="proj skill-fill">
+							<span class="skill-percent">65%</span>
+						</div>
+					  </div>
+					  
+					  <div class="skill">
+						<div class="skill-title">Adaptability</div>
+						<div class="skill-bar"></div>
+						<div class="adapt skill-fill">
+							<span class="skill-percent">45%</span>
+						</div>
+					  </div>
+					  
+					</div>
+				</div>
+			</section>
+			
+			<section class="arts" id="arts">
+				<div class="arts-text">
+					<h2>My Arts</h2>
+					<h5>Some of my Distinguished Works</h5>
+				</div>
+				
+				<div class="arts-content">
+				
+					<div class="row">
+						<img src="assets/art1.jpg">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>Self Portrait</h6>
+							</div>
+							<div class="row-date">
+								<h6>May 2023</h6>
+							</div>
+						</div>
+						<h3>Vector Art</h3>
+					</div>
+					
+					<div class="row">
+						<img src="assets/art2.jpg">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>Mixed Feelings</h6>
+							</div>
+							<div class="row-date">
+								<h6>September 2022</h6>
+							</div>
+						</div>
+						<h3>Oil Painting</h3>
+					</div>
+					
+					<div class="row">
+						<img src="assets/art3.jpg">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>Louis</h6>
+							</div>
+							<div class="row-date">
+								<h6>May 2023</h6>
+							</div>
+						</div>
+						<h3>Limited Colour Palette</h3>
+					</div>
+					
+					<div class="row">
+						<img src="assets/art4.png">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>Lost with the Sky</h6>
+							</div>
+							<div class="row-date">
+								<h6>May 2023</h6>
+							</div>
+						</div>
+						<h3>Windows Paint</h3>
+					</div>
+					
+					<div class="row">
+						<img src="assets/art5.png">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>The Krishna</h6>
+							</div>
+							<div class="row-date">
+								<h6>November 2022</h6>
+							</div>
+						</div>
+						<h3>Acrylic Pour</h3>
+					</div>
+					
+					<div class="row">
+						<img src="assets/art6.jpg">
+						<div class="main-row">
+							<div class="row-text">
+								<h6>Monique</h6>
+							</div>
+							<div class="row-date">
+								<h6>May 2023</h6>
+							</div>
+						</div>
+						<h3>WPAP</h3>
+					</div>
+					
+				</div>
+			</section>
+		
+	</body>
+
+</html>
+
