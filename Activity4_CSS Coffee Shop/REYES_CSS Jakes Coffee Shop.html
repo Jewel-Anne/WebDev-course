@@ -1,0 +1,128 @@
+<!----------------------------------------------------------------------------------------------- 
+	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Write the appropriate CSS to change the presentation of the webpage. 
+					 The new page layout includes a header section, 
+					 two columns (one for navigation menu and one for the main content) 
+					 and a footer section.
+					 This is the HTML file.
+					 Use an external CSS.
+------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="HTML and CSS, Jewel's Jewelry, CSS style" />
+  <meta name="author" content="Jewel Anne A. Reyes">
+
+  <title>Jewel's Jewelry</title>
+  <link rel="shortcut icon" href="assets/icon.png" />
+  <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav id="container">
+    <div id="logo">
+      <h1>Jewel's Jewelry Shop</h1>
+    </div>
+	
+    <div id="leftcolumn">
+      <a class="navBar" href="#home">Home</a>
+      <a class="navBar" href="#jewelries">Jewelries</a>
+      <a class="navBar" href="#music">Music</a>
+      <a class="navBar" href="#jobs">Careers</a>
+    </div>
+
+    <section class="page" id="home">
+      <div id="rightcolumn">
+        <h3>Explore our jewelries...</h3>
+			<img id='JewelPic' class='floatright' src='assets/jewelry.jpg' alt='necklace' width='200' height='200'/>
+			<ul>
+				<li>Necklaces & Pendants</li>
+				<li>Bracelets</li>
+				<li>Rings</li>
+				<li>Earrings</li>
+				<li>Fine Watches</li>
+				<li>Brooches</li>
+				<li>Men's Jewelry</li>
+				<li>...</li>
+			</ul>
+		<p><br><br>123 Expensive Road<br>Fancy, NG1 5YU<br>0912 345 6789</p>
+      </div>
+    </section>
+
+    <section class="page" id="jewelries">
+      <div id="rightcolumn">
+		<div class="jewels">	
+			<img id='necklaces' src='assets/necklaces.jpg' alt='necklaces' width='130' height='130'/>
+			<h3>Necklaces</h3>
+		</div>
+		<div class="jewels">	
+			<img id='bracelets' src='assets/bracelets.jpg' alt='bracelets' width='130' height='130'/>
+			<h3>Bracelets</h3>
+		</div>
+		<div class="jewels">	
+			<img id='rings' src='assets/rings.jpg' alt='rings' width='130' height='130'/>
+			<h3>Rings</h3>
+		</div>
+		<div class="jewels">	
+			<img id='earrings' src='assets/earrings.jpg' alt='earrings' width='130' height='130'/>
+			<h3>Earrings</h3>
+		</div>
+		<div class="jewels">	
+			<img id='watches' src='assets/watches.jpg' alt='watches' width='130' height='130'/>
+			<h3>Watches</h3>
+		</div>
+		<div class="jewels">	
+			<img id='brooches' src='assets/brooches.jpg' alt='brooches' width='130' height='130'/>
+			<h3>Brooches</h3>
+		</div>
+      </div>
+    </section>
+
+    <section class="page" id="music">
+      <div id="rightcolumn">
+        <h3>Welcome to the Music Page</h3>
+        <p>Diamonds are a girl's best friend by Marilyn Monroe<br></p>
+		<video width="550" height="250" controls>
+			<source src="assets/Diamonds are a girls best friend by Marilyn Monroe.mp4" type="video/mp4">
+		</video>
+      </div>
+    </section>
+
+    <section class="page" id="jobs">
+      <div id="rightcolumn">
+		<div id="jobContent">
+		  <h4>Job Openings:</h4>
+		  <ul>
+			<li>Sales Associate</li>
+			<li>Online Jewelry Consultant</li>
+			<li>Cloud Specialist</li>
+			<li>Assistant Store Manager</li>
+			<li>Sales Assistant</li>
+			<li>Supervisor, Product Verification</li>
+			<li>Student Assistant</li>
+			<li>Creative Merchandising Manager</li>
+			<li>Value Excellence Analyst</li>
+			<li>Lean Specialist</li>
+		  </ul>
+		  <p><br><br>To apply, please send your resume to:</p>
+		  <a href="mailto:jobs@jewelsjewelry.com">jobs@jewelsjewelry.com</a>
+      </div>
+    </section>
+
+    <div id="footer">
+      &copy; 2023 Jewel's Jewelry Shop<br>
+      <a href="mailto:jewelsjewelry@shop.com">jewelsjewelry@shop.com</a>
+    </div>
+	
+  </nav>
+</body>
+
+</html>

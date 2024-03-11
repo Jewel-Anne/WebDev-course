@@ -1,0 +1,117 @@
+/* 	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Write the appropriate CSS to change the presentation of the webpage. 
+					 The new page layout includes a header section, 
+					 two columns (one for navigation menu and one for the main content) 
+					 and a footer section.
+					 This is the CSS file.
+*/
+*{/*universal selector*/
+	background-color:#EFD1C6;
+	color:#26303D;
+	margin: 0;
+	padding: 0;
+	font-family: "Montserrat", sans-serif;
+	box-sizing: border-box;
+}
+#container{ /*example of ID selector*/
+	margin-top:20px;
+	margin-left:20%;
+	margin-right:20%;
+	height:480px;
+	width:750px;
+	border-style:solid;
+	padding:0px;
+}
+#logo{
+	background-color:#6EC9C6;
+	text-align:center;
+	justify-content:center;
+	border-bottom-style:solid;
+	height:50px;
+	margin:0px;
+	padding:10px;
+}
+#logo h1{
+	background-color:#6EC9C6;
+}
+ul{ /*example of Type Selector*/
+	margin-left:35px;
+}
+#leftcolumn{
+	background-color:#C6D6EF;
+	position:relative;
+	padding-left:20px;
+	left:0px;
+	width:130px;
+	height:360px;
+	float:left;
+	white-space:pre-line;
+}
+#leftcolumn a{
+	background-color:#C6D6EF;
+	margin-bottom:50px;
+}
+#rightcolumn{
+	background-color:#EFD1C6;
+	position:relative;
+	width:580px;
+	height:300px;
+	padding:10px;
+	float:right;
+}
+#jewelries #rightcolumn{
+	background-color:#EFD1C6;
+	position:relative;
+	width:580px;
+	height:300px;
+	padding:10px;
+	float:right;
+	display: flex; 
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+#navBar{
+	text-align:left;
+}
+#JewelPic{
+	position:absolute;
+	right:40px;
+}
+.jewels { /*example of Class Selector*/
+	width:130px;
+	height:150px;
+	margin-left:25px;
+	margin-right:25px;
+	margin-bottom:10px;
+}
+.jewels h3{ /*example of Descendant Selector*/
+	text-align:center;
+}
+video{
+	margin:20px;
+	margin-left:0px;
+}
+#footer{
+	background-color:#6EC9C6; /*CSS hex color*/
+	border-top-style:solid;
+	height:62px;
+	text-align:center;
+	font-style:italic;
+	margin-top:320px;
+	padding-top:10px;
+}
+#footer a{
+	background-color:#6EC9C6;
+}
+/* multiple pages in 1 html file*/
+.page{
+      display: none;
+      padding: 20px;
+}    
+.page:target{/*example of Psuedo-classes Selector*/
+      display: block;
+}
