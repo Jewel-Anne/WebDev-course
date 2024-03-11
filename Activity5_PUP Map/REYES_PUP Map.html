@@ -1,0 +1,254 @@
+<!----------------------------------------------------------------------------------------------- 
+	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Create an html, css, and javascript for the PUP Map.  
+					 Use the "onmouseover" and "onmouseout" to display the
+					 picture and description of the place or area.
+					 This is to resemble a kiosk in shopping malls.
+------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	  <meta charset="UTF-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	  <meta name="description" content="HTML and CSS, Javascript, CSS style, PUP Map, Jewel Reyes" />
+	  <meta name="author" content="Jewel Anne A. Reyes">
+
+	  <title>PUP Map</title>
+	  <link rel="shortcut icon" href="assets/icon.png" />
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	  
+	  <script>
+	    function showInfo(imageSrc, place, description) {
+		  // Create a div element for the tooltip
+		  var tooltip = document.createElement('div');
+		  tooltip.id = 'tooltip';
+		  tooltip.style.position = 'absolute';
+		  tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+		  tooltip.style.color = '#fff';
+		  tooltip.style.padding = '10px';
+		  tooltip.style.borderRadius = '5px';
+		  tooltip.style.left = (event.pageX + 10) + 'px';
+		  tooltip.style.top = (event.pageY + 10) + 'px';
+
+		  // Create an image element
+		  var image = document.createElement('img');
+		  image.src = imageSrc;
+		  image.style.maxWidth = '200px';
+
+		  // Create a heading element for the place
+		  var heading = document.createElement('h3');
+		  heading.textContent = place;
+		  heading.style.fontFamily = 'Arial, sans-serif';
+		  heading.style.fontSize = '15px';
+		  heading.style.marginBottom = '5px';
+		  heading.style.backgroundColor= '#800000';
+
+		  // Create a paragraph element for the description
+		  var desc = document.createElement('p');
+		  desc.textContent = description;
+		  desc.style.fontFamily = 'Arial, sans-serif';
+		  desc.style.fontSize = '10px';
+		  desc.style.color = '#fff';
+
+		  // Append the elements to the tooltip
+		  tooltip.appendChild(image);
+		  tooltip.appendChild(heading);
+		  tooltip.appendChild(desc);
+
+		  // Append the tooltip to the body
+		  document.body.appendChild(tooltip);
+		}
+
+		function hideInfo() {
+		  // Remove the tooltip if it exists
+		  var tooltip = document.getElementById('tooltip');
+		  if (tooltip) {
+			tooltip.remove();
+		  }
+		}
+	  </script>
+	  
+	</head>
+	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: "Montserrat", sans-serif;
+			box-sizing: border-box;
+		}
+		body {
+			background-color: #f4f4f4;
+			font-size: 15px;
+			text-align: center;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			background-size: cover;
+			outline: none;
+		}
+		#container {
+			margin: 0 auto;
+			width: 800px;
+			height: 1000px
+			text-align: center;
+			background-color: #fff;
+			border-radius: 15px;
+			box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+			margin-top: 20px;
+			margin-bottom: 10px;
+			padding: 25px;
+			overflow: hidden; 
+			position: fixed; 
+			top: 50%; 
+			left: 50%;
+			transform: translate(-50%, -50%); 
+		}
+	</style>
+	
+	<body>
+		<div class="container" id="container">
+			<h1>PUP Map</h1>
+			<p>Hover on the map to view the image and learn more about an area in PUP.</p>
+			<h6>Made by Jewel Anne Reyes<br><br></h6>
+
+			<img src="assets/pupmap.gif" alt="PUP Map" usemap="#PUPMap" width="566" height="425">
+		</div>
+		
+		<map name="PUPMap">
+		  <!-- 1 Amphitheater -->
+		  <area shape="circle" 	alt="Amphitheater" 	onmouseover="showInfo('assets/1.jpg', 'Amphitheater', 'A venue for open-air performances.')" 
+		  onmouseout="hideInfo()"	coords="215,225,15">
+		  
+		  <!-- 2 Water Pump Facility -->
+		  <area shape="rect" 	alt="Water Pump" 	onmouseover="showInfo('assets/2.jpg', 'Water Pump Facility', 'Facility in PUP for water resources.')" 
+		  onmouseout="hideInfo()"	coords="140,33,162,54">
+		  
+		  <!-- 5 PUP Lagoon Entrance -->
+		  <area shape="circle" 	alt="Lagoon Gate" 	onmouseover="showInfo('assets/5.jpg', 'Lagoon Entrance', 'Entrance of PUP Lagoon where there are many food stalls and the Amphitheater.')" 
+		  onmouseout="hideInfo()"	coords="281,185,9">
+		  
+		  <!-- 6 Charlie del Rosario Hall -->
+		  <area shape="rect" 	alt="Charlie Hall" 	onmouseover="showInfo('assets/6.jpg', 'Charlie del Rosario Hall', 'Where different student organizations and council can be found.')" 
+		  onmouseout="hideInfo()"	coords="77,142,132,200">
+		  
+		  <!-- 8 Flag Pole -->
+		  <area shape="circle" 	alt="Flag Pole" 	onmouseover="showInfo('assets/8.jpg', 'Flag Pole', 'Where the flag is located and raised every Monday morning.')" 
+		  onmouseout="hideInfo()"	coords="298,249,9">
+		  
+		  <!-- 9 Grandstand -->
+		  <area shape="rect" 	alt="Grandstand" 	onmouseover="showInfo('assets/9.jpg', 'Grandstand', 'A bleacher and a place for audience watching the players in the field or oval.')" 
+		  onmouseout="hideInfo()"	coords="384,237,362,293">
+		  
+		  <!-- 10 Gymnasium and Sports Center -->
+		  <area shape="rect" 	alt="Gymnasium" 	onmouseover="showInfo('assets/10.jpg', 'Gymnasium and Sports Center', 'The PUP's covered gym and can also be a place of venue for occasions.')" 
+		  onmouseout="hideInfo()"	coords="373,47,461,93">
+		  
+		  <!-- 11 Interfaith Chapel -->
+		  <area shape="circle" 	alt="Interfaith" 	onmouseover="showInfo('assets/11.jpg', 'Interfaith Chapel', 'The chapel in PUP.')" 
+		  onmouseout="hideInfo()"	coords="278,336,41">
+		  
+		  <!-- 12 Laboratory High School -->
+		  <area shape="rect" 	alt="Lab High" 		onmouseover="showInfo('assets/12.jpg', 'Laboratory High School', 'This is the laboratory high school and was established in 1954.')" 
+		  onmouseout="hideInfo()"	coords="84,48,127,153">
+		 
+		  <!-- 13 PUP Lagoon -->
+		  <area shape="poly" 	alt="PUP Lagoon" 	onmouseover="showInfo('assets/13.jpg', 'PUP Lagoon', 'It is the newly-renovated lagoon inside the PUP.')" 
+		  onmouseout="hideInfo()"	coords="229,133,230,168,214,200,194,216,253,213,263,201,261,190,250,167,245,129">
+		  
+		  <!-- 14 Main Building Dome -->
+		  <area shape="poly" 	alt="PUP Dome" 		onmouseover="showInfo('assets/14.jpg', 'Main Building Dome', 'This is the Dome of the Main Building in PUP Sta. Mesa that spirals from 1st floor to top floor.')" 
+		  onmouseout="hideInfo()"	coords="199,267,181,295,191,313,222,313,232,295,217,267">
+		  
+		  <!-- 15 East Wing -->
+		  <area shape="rect" 	alt="East Wing" 	onmouseover="showInfo('assets/15.jpg', 'East Wing', 'This is the East Side of the building based from the direction seen on compass.')" 
+		  onmouseout="hideInfo()"	coords="192,314,220,384">
+		  
+		  <!-- 16 North Wing -->
+		  <area shape="rect" 	alt="North Wing" 	onmouseover="showInfo('assets/16.jpg', 'North Wing', 'This is the North Side of the building based from the direction seen on compass.')" 
+		  onmouseout="hideInfo()"	coords="234,293,272,236">
+		  
+		  <!-- 17 South Wing-->
+		  <area shape="rect" 	alt="South Wing" 	onmouseover="showInfo('assets/17.jpg', 'South Wing', 'This is the South Side of the building based from the direction seen on compass.')" 
+		  onmouseout="hideInfo()"	coords="145,276,151,376">
+		  
+		  <!-- 18 West Wing -->
+		  <area shape="rect" 	alt="West Wing" 	onmouseover="showInfo('assets/18.jpg', 'West Wing', 'This is the West Side of the building based from the direction seen on compass.')" 
+		  onmouseout="hideInfo()"	coords="195,264,124,257">
+		  
+		  <!-- 19 Main Gate -->
+		  <area shape="circle" 	alt="Main Gate" 	onmouseover="showInfo('assets/19.jpg', 'Main Gate', 'This is one of the gates of PUP.')" 
+		  onmouseout="hideInfo()"	coords="513,187,9">
+		  
+		  <!-- 20 Freedom Park -->
+		  <area shape="circle" 	alt="Freedom Park" 	onmouseover="showInfo('assets/20.jpg', 'Freedom Park', 'It is a place where students can sit and enjoy.')" 
+		  onmouseout="hideInfo()"	coords="308,229,10">
+		  
+		  <!-- 21 Ninoy Aquino Library and Learning Resources center -->
+		  <area shape="poly" 	alt="Library" 	onmouseover="showInfo('assets/21.jpg', 'Ninoy Aquino Library and Learning Resources Center', 'This is the library of PUP.')" 
+		  onmouseout="hideInfo()"	coords="169,49,199,167,222,160,210,114,253,99,246,79,203,88,192,43">
+		  
+		  <!-- 22 Outdoor Volleyball and Basketball Court -->
+		  <area shape="rect" 	alt="PUP Court" 	onmouseover="showInfo('assets/22.jpg', 'Outdoor Volleyball and Basketball Court', 'This is the outdoor court of PUP where students can play basketball or any other sports.')" 
+		  onmouseout="hideInfo()"	coords="345,118,378,146">
+		  
+		  <!-- 24 Track and Football Oval -->
+		  <area shape="poly" 	alt="PUP Oval" 		onmouseover="showInfo('assets/24.jpg', 'Track and Football Oval', 'This huge space is the PUP oval wherein other sports, ROTC, events, and more are held.')" 
+		  onmouseout="hideInfo()"	coords="365,309,410,244,474,238,488,297,442,360">
+		  
+		  <!-- 26 Pasig River -->
+		  <area shape="poly" 	alt="Pasig River" 	onmouseover="showInfo('assets/26.jpg', 'Pasig River', 'The Pasig River can be seen from the PUP.')" 
+		  onmouseout="hideInfo()"	coords="0,17,31,60,66,258,91,367,104,422,0,420">
+		  
+		  <!-- 27 PUP Sta. Mesa Ferry Station -->
+		  <area shape="rect" 	alt="PUP Ferry" 	onmouseover="showInfo('assets/27.jpg', 'PUP Sta. Mesa Ferry Station', 'This is the Ferry Station of Pasig River in Sta. Mesa.')" 
+		  onmouseout="hideInfo()"	coords="113,371,126,413">
+		  
+		  <!-- 28 Apolinario Mabini Shrine -->
+		  <area shape="circle" 	alt="Apolinario" 	onmouseover="showInfo('assets/28.jpg', 'Apolinario Mabini Shrine', 'We can see here the shrine and house of Apolinario Mabini.')" 
+		  onmouseout="hideInfo()"	coords="344,257,10">
+		  
+		  <!-- 30 Linear Park -->
+		  <area shape="circle" 	alt="Linear Park" 	onmouseover="showInfo('assets/30.jpg', 'Linear Park', 'This is a park in PUP wherein students can stay and take a view of the Pasig River.')" 
+		  onmouseout="hideInfo()"	coords="90,273,10">
+		  
+		  <!-- 31 Guard House -->
+		  <area shape="circle" 	alt="Guard House" 	onmouseover="showInfo('assets/31.jpg', 'Guard House', 'This is the guard house located at the main gate of PUP.')" 
+		  onmouseout="hideInfo()"	coords="514,204,9">
+		  
+		  <!-- 32 Mabini Monument PUP Obelisk -->
+		  <area shape="circle" 	alt="PUP Obelisk" 	onmouseover="showInfo('assets/32.jpg', 'Mabini Monument PUP Obelisk', 'This is a monument of PUP Obelisk with information.')" 
+		  onmouseout="hideInfo()"	coords="320,186,18">
+		  
+		  <!-- 34 PUP Pylon -->
+		  <area shape="circle" 	alt="PUP Pylon" 	onmouseover="showInfo('assets/34.jpg', 'PUP Pylon', 'The PUP Pylon can be seen outside the PUP at the very entrance of it. ')" 
+		  onmouseout="hideInfo()"	coords="514,170,9">
+		  
+		  <!-- 36 Souvenir Shop -->
+		  <area shape="circle" 	alt="PUP Souvenir" 	onmouseover="showInfo('assets/36.jpg', 'Souvenir Shop', 'Students and visitors can buy souvenirs from the souvenir shop.')" 
+		  onmouseout="hideInfo()"	coords="398,202,10">
+		  
+		  <!-- 37 Swimming Pool-->
+		  <area shape="rect" 	alt="PUP Pool" 		onmouseover="showInfo('assets/37.jpg', 'Swimming Pool', 'This is the swimming pool of PUP.')" 
+		  onmouseout="hideInfo()"	coords="301,54,361,85">
+		  
+		  <!-- 38 Tennis Court-->
+		  <area shape="rect" 	alt="Tennis Court" 	onmouseover="showInfo('assets/38.jpg', 'Tennis Court', 'This is the tennis court of PUP.')" 
+		  onmouseout="hideInfo()"	coords="403,118,443,146">
+		  
+		  <!-- 39 R.C. Overhead Water Tank -->
+		  <area shape="circle" 	alt="Water Tank" 	onmouseover="showInfo('assets/39.jpg', 'R.C. Overhead Water Tank', 'This is the water tank of PUP.')" 
+		  onmouseout="hideInfo()"	coords="160,74,10">
+		  
+		</map>
+	</body>
+	
+</html>

@@ -1,0 +1,21 @@
+Made by:	Jewel Anne A. Reyes
+Student Number: 2020-01144-MN-0
+Year & Section: BSCS 3-1N
+Subject:	COMP 20163 Web Development
+	 
+About: 		Create an html, css, and javascript for the PUP Map.  
+		Use the "onmouseover" and "onmouseout" to display the
+		picture and description of the place or area.
+		This is to resemble a kiosk in shopping malls.
+
+---To view the website---
+1. Open the "REYES_PUP Map.html" in any browser.
+
+---To view my presentation---
+1. Click and open the "PRESENTATION_Reyes_PUP Map.mp4" file
+
+
+-------------------------
+Other materials (pictures) are at the "assets" folder.
+
+THank you and Enjoy!
