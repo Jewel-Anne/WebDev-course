@@ -1,0 +1,267 @@
+<!----------------------------------------------------------------------------------------------- 
+	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Create a website that plays the PUP Hymn and synchronously shows its lyrics.
+					 Use HTML marquee tag for the scrolling part of lyrics.
+					 The audio must be synchronous with the text.
+					 Upon opening the site, the audio must autoplay.
+					 Design the page any way you want.
+------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta
+			name="description"
+			content="HTML Music Player, Music Player, PUP Hymn, Imno ng PUP, Polytechnic University of the Philippines, PUP Lyrics, PUP Hymn Lyrics"/>
+		<meta name="author" content="Jewel Anne A. Reyes">
+		
+		<title>Imno ng PUP</title>
+		<link rel="shortcut icon" href="assets/puplogo.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	</head>
+
+	<style>
+		body {
+		  background-color: #f4f4f4;
+		  font-family: "Montserrat", sans-serif;
+		  font-size: 14px;
+		  text-align: center;
+		  padding: 0;
+		  margin: 0;
+		  width: 100%;
+		  background-image: url("assets/bg.jpg");
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		  outline: none;
+		}
+
+		h2 {
+		  text-align: center;
+		  margin-top: 35px;
+		}
+		
+		.puplogo {
+		  width:80px;
+		  margin-top: auto;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+		
+		h5 {
+		  text-align: right;
+		  margin-top: 5px;
+		  margin-right: 225px;
+		  color: #fff;
+		}
+
+		#container {
+		  margin: 0 auto;
+		  width: 800px;
+		  height: 400px
+		  text-align: center;
+		  background-color: #fff;
+		  border-radius: 25px;
+		  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+		  overflow: scroll;
+		  margin-top: 20px;
+		  margin-bottom: 10px;
+		  min-height: 400px;
+		  max-height: 400px;
+		}
+		
+	<!-- Lyrics  -->
+		#lyrics {
+		  margin-top: 20px;
+		  text-align: center;
+		  line-height: 1.8;
+		  padding: 20px;
+		  position: relative;
+		}
+
+		#lyrics p { 
+		  color: #999;
+		  cursor: pointer;
+		} 
+
+		#lyrics p:hover {
+		  color: #000;
+		  text-decoration: underline;
+		}
+
+		#lyrics p.highlighted {
+		  color: #800000;
+		  font-weight: bold;
+		}
+
+		#controls {
+		  margin-top: 20px;
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  padding: 0 20px;
+		}
+		
+	<!-- Audio Player  -->
+		#audio {
+		  margin-top: 20px;
+		  width: 100%;
+		}
+	
+		body .player {
+          z-index: 10;
+          background: #F9F9F9;
+          color: #000;
+          min-height: 140px;
+          max-height: 140px;
+          display: flex;
+		  margin-top: 20px;
+          margin-bottom: 20px;
+          margin-right: auto;
+          margin-left: auto;
+          border-radius: 30px 0 30px 0;
+		  width: 800px;
+		  text-align: center;
+		}
+		
+		body .player .left {
+		  width: 200px;
+		  background-image: url("assets/pupcover.jpg");
+		  background-size: cover;
+		  border-top-left-radius: 30px;
+		}
+
+		body .player .right {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		body .player .right .top {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-left: 10px;
+		}
+
+		.songs {
+			font-size: 12px;
+			font-weight: 600;
+			text-align: left;
+			margin-top: 25px;
+			margin-bottom: 5px;
+		}
+
+		.writer {
+			font-size: 11px;
+			font-weight: 400;
+			text-align: left;
+			margin: 0;
+		}
+
+		body .player .right .bottom {
+			display: flex;
+		}
+
+		body .player .right .bottom audio {
+			flex-grow: 1;
+			height: 32px;
+			outline: none;
+			margin-bottom: 20px;
+		}
+	</style>
+
+	<body>
+		<div id="container">
+		<h2> Polytechnic University of the Philippines </h2>
+		<img class="puplogo" src="assets/puplogo.png" alt="PUP Logo" >
+			<div id="lyrics">
+			<marquee style="text-align: center;" direction="up" scrollamount="1" >
+				<p start-in-sec="0">	...</p>
+				<p start-in-sec="12">	Sintang Paaralan<br>(Beloved School)</br></p>
+				<p start-in-sec="15">	Tanglaw ka ng bayan<br>(You are the light of the nation)</br></p>
+				<p start-in-sec="18">	Pandayan ng isip ng kabataan<br>(Forger of the youth's mind)</br></p>
+				<p start-in-sec="24">	Kami ay dumating nang salat sa yaman<br>(We came not having much wealth)</br></p>
+				<p start-in-sec="29">	Hanap na dunong ay iyong alay<br>(Searching for wisdom that you offer)</br></p>
+				
+				<p start-in-sec="35">	Ang layunin mong makatao<br>(Your objectives are benevolent)</br></p>
+				<p start-in-sec="41">	Dinarangal ang Pilipino<br>(Honoring the Filipino)</br></p>
+				<p start-in-sec="47">	Ang iyong aral, diwa, adhikang taglay<br>(The lessons, essence, aspirations you possess)</br></p>
+				<p start-in-sec="53">	PUP, aming gabay<br>(PUP, our guide)</br></p>
+				<p start-in-sec="56">	Paaralang dakila<br>(A great school)</br></p>
+				<p start-in-sec="62">	PUP, pinagpala<br>(PUP, you are blessed)</br></p>
+				
+				<p start-in-sec="68">	Gagamitin ang karunungan<br>(We will use the knowledge we learned)</br></p>
+				<p start-in-sec="74">	Mula sa iyo, para sa bayan<br>(From you, for the country)</br></p>
+				<p start-in-sec="80">	Ang iyong aral, diwa, adhikang taglay<br>(The lessons, essence, aspirations you possess)</br></p>
+				<p start-in-sec="86">	PUP, aming gabay<br>(PUP, our guide)</br></p>
+				<p start-in-sec="89">	Paaralang dakila<br>(A great school)</br></p>
+				<p start-in-sec="95">	PUP, pinagpala<br>(PUP, you are blessed)</br></p>
+			</marquee>
+			</div>
+		</div>
+		
+		<div class="player">
+			<div class="left"></div>
+			<div class="right">
+				<div class="top">
+					<p class="songs">
+						Imno ng PUP (PUP Hymn)
+							<p class="writer"> 
+							S. Calabig, S. Roldan, and R. Amaranto 
+							</p>
+					</p>
+				</div>
+				<div class="bottom">
+					<audio controls autoplay id="audio" src="assets/ImnoNgPUP.mp3"></audio>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		const lyricsContainer = document.querySelector("#lyrics");
+		const audioElement = document.querySelector("#audio");
+		
+
+		lyricsContainer.addEventListener("click", function(event) {
+		  if (event.target.tagName === "P") {
+			const startTime = parseFloat(event.target.getAttribute("start-in-sec"));
+			audioElement.currentTime = startTime;
+		  }
+		});
+
+		audioElement.addEventListener("timeupdate", function() {
+		  const currentTime = audioElement.currentTime;
+		  const lyrics = lyricsContainer.getElementsByTagName("p");
+
+		  for (let i = 0; i < lyrics.length; i++) {
+			const startTime = parseFloat(lyrics[i].getAttribute("start-in-sec"));
+
+			if (startTime <= currentTime) {
+			  for (let j = 0; j < lyrics.length; j++) {
+				lyrics[j].classList.remove("highlighted");
+			  }
+
+			  lyrics[i].classList.add("highlighted");
+			}
+		  }
+		});
+		
+	</script>
+
+	<footer>
+		<h5>Made by Jewel Anne A. Reyes</h5>
+	</footer>
+
+</html>
+
