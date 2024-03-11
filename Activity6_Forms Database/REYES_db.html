@@ -1,0 +1,745 @@
+<!----------------------------------------------------------------------------------------------- 
+	 Made by:		 Jewel Anne A. Reyes
+	 Student Number: 2020-01144-MN-0
+	 Year & Section: BSCS 3-1N
+	 Subject:		 COMP 20163 Web Development
+	 
+	 About: 		 Create a database for the activity 3: HTML Form.
+					 The instruction for activity 3 is as follows:
+	 
+					 Create an Employee Registration Form Website.
+					 Use HTML and CSS.
+					 Use the HTML form attributes: action & method.
+					 You can use JS for cascading dropdown for address.
+					 Design the page any way you want.
+					 
+					 Use this link for the sample form: https://www.jotform.com/form-templates/employee-registration-form
+					 Use these Form Elements:
+					 1. Single line text box*				7. Multi-line text*
+					 2. Submit button*						8. Password input*
+					 3. Check box*							9. File Upload*
+					 4. Radio Button*						10. General Button (js)*
+					 5. Dropdown list*						11. Hidden input*
+					 6. List box with multi selection*		
+------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta
+			name="description"
+			content="HTML, Registration Form, Employee Registration Form, Register, CSS, HTML Registration Form"/>
+		<meta name="author" content="Jewel Anne A. Reyes">
+		
+		<title>Secret Org</title>
+		<link rel="shortcut icon" href="assets/icon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		
+		<script type="text/javascript" src="page/script.js"></script>
+	</head>
+
+	<style>
+		* {
+		  margin: 0;
+		  padding: 0;
+		  box-sizing: border-box;
+		  font-family: "Montserrat", sans-serif;
+		}
+		body {
+		  min-height: 100vh;
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		  padding: 20px;
+		  background: #177073;
+		  background-image: url(assets/bg.jpg);
+		}
+		#home h3 {
+		  padding-left: 50px;
+		}
+	/* Navigation Bar  */
+		.navbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-left: 5%;
+			padding-right: 3%;
+			margin: auto;
+			
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			background-color: #177073;
+			z-index: 9999;
+			width: 100%;
+		}
+		.logo {
+			width: 100px;
+			cursor: pointer;
+			float: left;
+		}
+		.navbar ul {
+			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.navbar ul li {
+			list-style: none;
+			display: inline-block;
+			margin: 10px 25px;
+			position: relative;
+		}
+		.navbar ul li a {
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		.navbar ul li::after {
+			content: '';
+			height: 3px;
+			width: 0%;
+			background: white;
+			position: absolute;
+			left: 0;
+			bottom: -10px;
+			transition: 0.5s;
+		}
+		.navbar ul li:hover::after {
+			width: 100%;
+		}	
+/* Pages */		
+		.page {
+		  position: relative;
+		  max-width: 700px;
+		  width: 100%;
+		  background: #fff;
+		  padding: 25px;
+		  border-radius: 40px;
+		  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+		  margin-top: 100px;
+		}
+		.page header {
+		  font-size: 1.7rem;
+		  color: #177073;
+		  font-weight: 900;
+		  text-align: center;
+		}
+		.page .form {
+		  margin-top: 30px;
+		}
+
+		
+		h3 {
+		  color: #333;
+		  font-size: 1rem;
+		  font-weight: 400;
+		  margin-bottom: 8px;
+		  margin-top: 20px;
+		}
+		.footer {
+		  position: fixed;
+		  right: 0;
+		  bottom: 0;
+		  width: 10%;
+		  background-color: #177073;
+		  color: white;
+		  text-align: center;
+		  font-size: 10px;
+		  margin: auto;
+		  border-radius: 5px;
+		  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+		}
+/* Form  */
+		.form .input-box {
+		  width: 100%;
+		}
+		.input-box label {
+		  color: #333;
+		}
+		.form :where(.input-box input, .select-box) {
+		  position: relative;
+		  height: 50px;
+		  width: 100%;
+		  outline: none;
+		  font-size: 12px;
+		  color: #707070;
+		  margin-top: 8px;
+		  border: 1px solid #ddd;
+		  border-radius: 20px;
+		  padding: 0 15px;
+		}
+		.input-box input:focus {
+		  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+		}
+		.form .column {
+		  display: flex;
+		  column-gap: 15px;
+		}
+/* Address  */
+		.address :where(input, .select-box) {
+		  margin-top: 15px;
+		}
+		.select-box select {
+		  height: 100%;
+		  width: 100%;
+		  outline: none;
+		  border: none;
+		  color: #707070;
+		  font-size: 12px;  
+		}
+/* Skills */		
+		.checkcontainer {
+		  display: block;
+		  position: relative;
+		  padding-left: 30px;
+		  cursor: pointer;
+		  font-size: 12px;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		  margin-bottom: 7px;
+		  margin-top: 8px;
+		}
+		.checkcontainer input {
+		  position: absolute;
+		  opacity: 0;
+		  cursor: pointer;
+		  height: 0;
+		  width: 0;
+		}
+		.checkmark {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  height: 17px;
+		  width: 17px;
+		  background-color: #eee;
+		  border-radius: 6px;
+		}
+		.checkcontainer:hover input ~ .checkmark {
+		  background-color: #ccc;
+		}
+		.checkcontainer input:checked ~ .checkmark {
+		  background-color: #177073;
+		}
+		.checkmark:after {
+		  content: "";
+		  position: absolute;
+		  display: none;
+		}
+		.checkcontainer input:checked ~ .checkmark:after {
+		  display: block;
+		}
+		.checkcontainer .checkmark:after {
+		  left: 6px;
+		  top: 1px;
+		  width: 2px;
+		  height: 9px;
+		  border: solid white;
+		  border-width: 0 3px 3px 0;
+		  -webkit-transform: rotate(45deg);
+		  -ms-transform: rotate(45deg);
+		  transform: rotate(45deg);
+		}
+/* Specialization */
+		select {
+		  appearance: none;
+		  -webkit-appearance: none;
+		  -moz-appearance: none;
+		  background-color: transparent;
+		  border: none;
+		  padding: 0 1em 0 0;
+		  margin: 0;
+		  width: 100%;
+		  font-family: inherit;
+		  font-size: inherit;
+		  cursor: inherit;
+		  line-height: inherit;
+		  z-index: 1;
+		  outline: none;
+		}
+		.select {
+		  display: grid;
+		  grid-template-areas: "select";
+		  align-items: center;
+		  position: relative;
+		  select, &::after {grid-area: select;}
+		  min-width: 15ch;
+		  max-width: 100ch;
+		  border: 1px solid var(--select-border);
+		  border-radius: 8px;
+		  padding: 0.25em 0.5em;
+		  font-size: 12px;
+		  cursor: pointer;
+		  line-height: 1.1;
+		  background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+		  &::after {
+			content: "";
+			justify-self: end;
+			width: 0.8em;
+			height: 0.5em;
+			background-color: var(--select-arrow);
+			clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+		  }
+		}
+/* Resume Upload */
+		.uploadcontainer {
+		  position: relative;
+		  max-width: 700px;
+		  width: 100%;
+		  background: #fff;
+		  padding: 25px;
+		  border-radius: 15px;
+		  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+		  margin-top: 8px;
+		}
+/* Cover Letter */
+		label,textarea {
+		  font-size: 12px;
+		  letter-spacing: 1px;
+		}
+		textarea {
+		  padding: 10px;
+		  max-width: 100%;
+		  line-height: 1.5;
+		  border-radius: 15px;
+		  border: 1px #333;
+		  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+		  margin-top: 8px;
+		}
+/* Gender  */
+		.form .gender-box {
+		  margin-top: 20px;
+		}
+		.form :where(.gender-option, .gender) {
+		  display: flex;
+		  align-items: center;
+		  column-gap: 33px;
+		  flex-wrap: wrap;
+		  margin-bottom: 20px;
+		  margin-top: 8px;
+		}
+		.form .gender {
+		  column-gap: 5px;
+		}
+		.gender input {
+		  accent-color: #177073;
+		}
+		.form :where(.gender input, .gender label) {
+		  cursor: pointer;
+		}
+		.gender label {
+		  color: #707070;
+		  font-size: 12px;
+		}
+/* Button */
+		.form button {
+		  height: 55px;
+		  width: 100%;
+		  color: #fff;
+		  font-size: 1rem;
+		  font-weight: 600;
+		  margin-top: 30px;
+		  border: none;
+		  border-radius: 50px;
+		  cursor: pointer;
+		  transition: all 0.2s ease;
+		  background: #177073;
+		}
+		#submit:hover {
+		  background: #4abec2;
+		}
+		#reset:hover {
+		  background: #4abec2;
+		}
+		input[type=file]::file-selector-button {
+		  position: relative;
+		  margin-right: 10px;
+		  margin-left: 50px;
+		  border: none;
+		  background: #177073;
+		  padding: 5px 10px;
+		  border-radius: 20px;
+		  color: #fff;
+		  cursor: pointer;
+		  transition: background .2s ease-in-out;
+		}
+		input[type=file]::file-selector-button:hover {
+		  background: #4abec2;
+		}
+		.drop-container {
+		  position: relative;
+		  display: flex;
+		  gap: 10px;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  height: 200px;
+		  padding: 20px;
+		  border-radius: 10px;
+		  border: 2px dashed #555;
+		  color: #444;
+		  cursor: pointer;
+		  transition: background .2s ease-in-out, border .2s ease-in-out;
+		}
+
+		.drop-container:hover {
+		  background: #eee;
+		  border-color: #333;
+		}
+
+		.drop-container:hover .drop-title {
+		  color: #333;
+		}
+
+		.drop-title {
+		  color: #333;
+		  font-size: 16px;
+		  font-weight: bold;
+		  text-align: center;
+		  transition: color .2s ease-in-out;
+		}
+/* Home */
+		#HomePic{
+			position:flex;
+			float: right;
+			margin-right: 50px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		#home ul {
+			float: right;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#home ul li {
+			list-style: none;
+			display: inline-block;
+			margin: 10px 25px;
+			position: relative;
+		}
+/* Responsive */
+		@media screen and (max-width: 500px) {
+		  .form .column {
+			flex-wrap: wrap;
+		  }
+		  .form :where(.work-option, .work) {
+			row-gap: 15px;
+		  }
+		  .form :where(.gender-option, .gender) {
+			row-gap: 15px;
+		  }
+		}
+/* multiple pages in 1 html file*/
+		.page{
+			  display: none;
+			  padding: 20px;
+			  margin-top: 100px;
+		}    
+		.page:target{/*example of Psuedo-classes Selector*/
+			  display: block;
+		}
+	</style>
+
+	<body>
+	
+		<nav class="navbar">
+			<a href='#home'>
+				<img src="assets/logo.png" class="logo">
+			</a>
+			
+			<ul>
+				<li><a href='#home'>Home</a></li>
+				<li><a href='#formcontainer'>Sign Up</a></li>
+				<li><a href='#login'>Login</a></li>
+			</ul>
+		</nav>
+<!------------------------------------------------------------------------------------------------------------>	
+<!------------------------------------------------------------------------------------------------------------>	
+	
+		<section class="page" id="home">
+		  <header>Welcome to Secret Organization Website!</header>
+		  <img id='HomePic' class='floatright' src='assets/home.jpg' alt='shhh' width='200' height='300'/>
+		  <h3>
+		  <br>Hello Everyone! 
+		  <br>I'm Jewel Anne Reyes from BSCS 3-1N
+		  <br>
+		  <br>You have found our organization's website.
+		  <br>
+		  <br>Kindly register so that you'll be able to 
+		  <br>login to our exclusive page! 
+		  <br>
+		  <br>Enjoy! :)
+		  <br>
+		  <br>
+		  <br>
+		  </h3>
+			<ul>
+				<li><a href='#formcontainer'>New user?</a></li>
+				<li><a href='#login'>Login to your account</a></li>
+			</ul>
+		</section>
+
+<!------------------------------------------------------------------------------------------------------------>	
+<!------------------------------------------------------------------------------------------------------------>	
+
+		<section class="page" id="formcontainer">
+		  <header>Secret Organization Registration Form</header>
+		  
+		  <form action="page/submit.php" class="form" method="post" enctype="multipart/form-data">
+		  
+<!---------------------------------------------------------------------- 
+						Full Name & Birthday
+------------------------------------------------------------------------>
+				<div class="column">
+					<div class="column">
+						<div class="input-box">
+						  <h3>Full Name</h3>
+						  <input type="text" name="first_name" value="" title="Please enter your First Name" placeholder="Enter first name" size="65" maxlength="50" required />
+						</div> 
+						
+						<div class="input-box">
+						  <input style="margin-top: 55px" type="text" name="last_name" value="" title="Please enter your Last Name" placeholder="Enter surname" maxlength="50" required />
+						</div>
+					</div>
+					<div class="input-box">
+						<h3>Date of Birth</h3>
+						<input type="date" name="birthdate" value="" title="Please enter your Birthday" placeholder="Enter birth date" maxlength="50" required />
+					</div>
+				</div>
+<!---------------------------------------------------------------------- 
+								Contacts
+------------------------------------------------------------------------>				
+				<div class="column">
+					<div class="input-box">
+					  <h3>Email</h3>
+					  <input type="email" name="email" value="" title="Please enter your Email" placeholder="Enter email address" maxlength="50" required />
+					</div>
+					<div class="input-box">
+					  <h3>Phone Number</h3>
+					  <input type="number" name="Phonenumber" value="" title="Please enter your Number" placeholder="Enter phone number" required />
+					</div>
+				</div>
+<!---------------------------------------------------------------------- 
+							  Password
+------------------------------------------------------------------------>				
+				<div class="input-box">
+				  <h3>Preferred Password</h3>
+				  <input type="password" id="password" name="password" value="" title="Please enter your Preferred Password" placeholder="Enter password" maxlength="50" required />
+				  <input type="hidden" name="secretorg_email" value="secret@email.com" />
+				</div>
+<!---------------------------------------------------------------------- 
+							Sex & Specialization
+------------------------------------------------------------------------>					
+				<div class="column">
+					<div class="gender-box">
+					  <h3>Sex</h3>
+					  <div class="gender-option">
+						<div class="gender">
+						  <input type="radio" value="M" id="check-male" name="gender" />
+						  <label for="check-male">Male</label>
+						</div>
+						<div class="gender">
+						  <input type="radio" value="F" id="check-female" name="gender" />
+						  <label for="check-female">Female</label>
+						</div>
+						<div class="gender">
+						  <input type="radio" value="N" id="check-noans" name="gender" checked />
+						  <label for="check-noans">Prefer not to say</label>
+						</div>
+					  </div>
+					</div>
+					
+					<div class="gender-box">					
+					<h3>Specialization (hold down the ctrl key)</h3>
+					<div class="select select-multiple">
+						<select multiple id="multi-select" name='specialization[]' required>
+							<option value="arts" 	name='specialization[]'>Arts</option>
+							<option value="pol" 	name='specialization[]'>Politics</option>
+							<option value="sci" 	name='specialization[]'>Science</option>
+							<option value="ai" 		name='specialization[]'>Artificial Intelligence</option>
+							<option value="Tech" 	name='specialization[]'>Technology</option>
+							<option value="Zoo" 	name='specialization[]'>Zoology</option>
+							<option value="bot" 	name='specialization[]'>Botany</option>
+							<option value="games"	name='specialization[]'>Online Games</option>
+							<option value="spying"	name='specialization[]'>Spying</option>
+							<option value="box"		name='specialization[]'>Boxing</option>
+							<option value="sports"	name='specialization[]'>Sports</option>
+							<option value="martial"	name='specialization[]'>Martial Arts</option>
+							<option value="makeup"	name='specialization[]'>Make-up</option>
+							<option value="music"	name='specialization[]'>Music</option>
+						</select>
+					</div>
+					</div>
+	
+				</div>
+<!---------------------------------------------------------------------- 
+								Address
+------------------------------------------------------------------------>					
+				<div class="input-box">
+				  <h3>Address</h3>
+				  <input type="text" name="address" placeholder="Enter street address" title="Please enter your detailed address" required />
+				  
+				  <div class="column">
+					<div class="select-box">
+						<select name="region" id="region" required>
+							<option value="">--- Select Region ---</option>
+						</select>
+					</div>
+					<div class="select-box">
+						<select name="province" id="state" required>
+							<option value="">--- Select State or Province ---</option>
+						</select>
+					</div>
+				  </div>
+				  
+				  <div class="column">
+					<div class="select-box">
+						<select name="city" id="city" required>
+							<option value="">--- Select City ---</option>
+						</select>
+					</div>
+					<div class="select-box">
+						<select name="brgy" id="brgy" required>
+							<option value="">--- Select Barangay ---</option>
+						</select>
+					</div>
+						<input name="zip" type="number" placeholder="Enter postal code" title="Please enter zip code" required />
+				  </div>
+				</div>
+<!---------------------------------------------------------------------- 
+								Skills
+------------------------------------------------------------------------>				
+				<div class="input-box">
+				  <h3>Skills</h3>
+				  <div class="column" id="skills" name="skills[]" multiple required>
+					  <label class="checkcontainer">Spy Skills
+						<input type="checkbox" value="spy" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+					  <label class="checkcontainer">Organized
+						<input type="checkbox" value="org" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+					  <label class="checkcontainer">Adaptable
+						<input type="checkbox" value="adapt" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+					  <label class="checkcontainer">Genius	
+						<input type="checkbox" value="genius" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+					  <label class="checkcontainer">Charistmatic
+						<input type="checkbox" value="charm" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+					  <label class="checkcontainer">None
+						<input type="checkbox" value="noskills" name="skills[]"/>
+						<span class="checkmark"></span>
+					  </label>
+				  </div>
+				</div>
+<!---------------------------------------------------------------------- 
+								ID Upload
+------------------------------------------------------------------------>
+				<div>
+					<h3>Please Upload Identification</h3>
+					<div class="column">
+						<div class="uploadcontainer">
+							<input type="hidden" id="MAX_FILE_SIZE" name="resume" value="300000" />
+							
+							<label class="drop-container" for="fileselect">
+								<span class="drop-title">Drop files here</span>
+								or
+								<input type="file" id="fileselect" name="resume" multiple="multiple" required />
+							</label>
+						</div>
+					</div>
+				</div>
+<!---------------------------------------------------------------------- 
+								Motto
+------------------------------------------------------------------------>				
+				<div>
+					<h3>Philosophy in Life</h3>
+					<div class="column">
+						<textarea id="coverletter" name="cover_letter" rows="5" cols="100" placeholder="My mantra is..." title="Please type your philosophy in life" required></textarea>
+					</div>
+				</div>		
+<!---------------------------------------------------------------------- 
+								Privacy Policy
+------------------------------------------------------------------------>				
+				<div class="input-box">
+				  <h3>By clicking "Submit" I agree that:</h3>
+				  <h6>I have read and accepted the User Agreement and Privacy Policy,<br>
+				  I may receive communications from SO and can change my notification preferences, and<br>
+				  I am at least 18 years old.<h6>
+				  <div class="column">
+					  <label class="checkcontainer">I Agree
+						<input type="checkbox" name="agree_terms" Value="yes" required />
+						<span class="checkmark"></span>
+					  </label>
+				  </div>
+				</div>				
+<!---------------------------------------------------------------------- 
+							Buttons
+------------------------------------------------------------------------>				
+			<div class="column">	
+				<button type="submit" id="submit" name="submit" Value="Submit" onclick="validateForm(event)">Submit</button>
+				<button type="reset" id="reset" onclick="messagebox()">Reset</button>
+			</div>
+			
+		  </form>
+		  
+		</section>
+		
+<!------------------------------------------------------------------------------------------------------------>	
+<!------------------------------------------------------------------------------------------------------------>	
+		  </form>
+		  
+		<section class="page" id="login">
+		  <header>Secret Organization Login</header>
+		  
+		  <form action="page/login.php" class="form" method="post" enctype="multipart/form-data">
+		  
+<!---------------------------------------------------------------------- 
+							Login Account
+------------------------------------------------------------------------>
+				<div class="input-box">
+				  <h3>Email</h3>
+				  <input type="email" id="email" name="email" value="" title="Please enter your Email" placeholder="Enter email address" maxlength="50" required />
+				</div>
+<!---------------------------------------------------------------------- 
+							Password
+------------------------------------------------------------------------>				
+				<div class="input-box">
+				  <h3>Password</h3>
+				  <input type="password" id="password" name="password" value="" title="Please enter your Password" placeholder="Enter password" maxlength="50" required />
+				</div>
+<!---------------------------------------------------------------------- 
+							Buttons
+------------------------------------------------------------------------>				
+			<div class="column">	
+				<button type="submit" id="login" name="login" Value="Login">Login</button>
+				<button type="reset" id="cancel" onclick="messagebox()">Cancel</button>
+			</div>
+			
+		</section>
+	</body>
+
+	<footer>
+		<div class="footer">
+		<p>Made by:<br> Jewel Reyes </p>
+		</div>
+	</footer>
+</html>
+
