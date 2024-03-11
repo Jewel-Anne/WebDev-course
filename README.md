@@ -1,6 +1,9 @@
 # WebDev-course
 This repository showcases HTML, CSS, PHP, and JavaScript activities completed as part of my Web Development Course. 
 
+A preview of the presentation for each activity can be viewed in the respective activity folders with the filename format:
+**PRESENTATION_REYES_activity name.mp4**
+
 # Activities
 - PUP Hymn
 - Personal Portfolio Website
